@@ -1,23 +1,34 @@
 <template>
   <el-table
-    :data="tableData"
-    style="width: 100%"
-    :row-class-name="tableRowClassName">
-    <el-table-column
-      prop="date"
-      label="日期"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="地址">
-    </el-table-column>
-  </el-table>
+      :data="tableData"
+      :span-method="arraySpanMethod"
+      border
+      style="width: 100%">
+      <el-table-column
+        prop="id"
+        label="ID"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="name"
+        label="姓名">
+      </el-table-column>
+      <el-table-column
+        prop="amount1"
+        sortable
+        label="数值 1">
+      </el-table-column>
+      <el-table-column
+        prop="amount2"
+        sortable
+        label="数值 2">
+      </el-table-column>
+      <el-table-column
+        prop="amount3"
+        sortable
+        label="数值 3">
+      </el-table-column>
+    </el-table>
 </template>
 
 <script>
@@ -30,33 +41,72 @@ export default {
   data() {
     return {
       tableData: [{
-        date: '2016-05-02',
+        id: '12987122',
         name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
+        amount1: '234',
+        amount2: '3.2',
+        amount3: 10,
       }, {
-        date: '2016-05-04',
+        id: '12987123',
         name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
+        amount1: '165',
+        amount2: '4.43',
+        amount3: 12,
       }, {
-        date: '2016-05-01',
+        id: '12987124',
         name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
+        amount1: '324',
+        amount2: '1.9',
+        amount3: 9,
       }, {
-        date: '2016-05-03',
+        id: '12987125',
         name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
+        amount1: '621',
+        amount2: '2.2',
+        amount3: 17,
+      }, {
+        id: '12987126',
+        name: '王小虎',
+        amount1: '539',
+        amount2: '4.1',
+        amount3: 15,
       }],
     };
   },
   methods: {
-    tableRowClassName({ row, rowIndex }) {
-      console.log(row);
-      if (rowIndex === 1) {
-        return 'warning-row';
-      } if (rowIndex === 3) {
-        return 'success-row';
+    arraySpanMethod({
+      row, column, rowIndex, columnIndex,
+    }) {
+      console.log('row: ', row);
+      console.log('column: ', column);
+      if (rowIndex % 2 === 0) { // 偶数行
+        if (columnIndex === 0) { // 合并偶数行的两行一列
+          return {
+            rowspan: 2,
+            colspan: 1,
+          };
+        }
+      } else { // 奇数行
+        if (columnIndex === 0) { // 消除奇数行的第一列
+          return {
+            rowspan: 0,
+            colspan: 0,
+          };
+        }
+        if (columnIndex === 1) { // 合并奇数行的2、3列
+          return {
+            rowspan: 1,
+            colspan: 2,
+          };
+        }
+        if (columnIndex === 2) { // 消除奇数行的第3列
+          return {
+            rowspan: 0,
+            colspan: 0,
+          };
+        }
       }
-      return '';
+      return [1, 1];
     },
   },
 };
