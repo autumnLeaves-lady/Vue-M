@@ -1,13 +1,36 @@
 <template>
   <div id="app">
-    <div id="header" class="header">测试项目</div>
+    <div
+      id="header"
+      class="header"
+    >测试项目</div>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">表格</router-link> |
+      <router-link to="/about" exact>输入框</router-link> |
+      <router-link to="/select" exact>选择框</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
+
+<script>
+// import SsMenu from '@/views/Menu.vue';
+
+export default {
+  name: 'shuwnejian',
+  components: {
+    // SsMenu,
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,7 +38,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  .header{
+  .header {
     background-color: #729bc3;
   }
 }
