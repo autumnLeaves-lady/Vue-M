@@ -2,21 +2,19 @@
   <div class="box">
     <el-select
       v-model="value"
-      placeholder="请选择"
+      placeholder="请选择文章标签"
+      multiple
+      filterable
+      allow-create
+      default-first-option
     >
-      <el-option-group
-        v-for="group in options"
-        :key="group.label"
-        :label="group.label"
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
       >
-        <el-option
-          v-for="item in group.options"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-option-group>
+      </el-option>
     </el-select>
   </div>
 </template>
@@ -26,38 +24,17 @@ export default {
   name: 'select',
   data() {
     return {
-      options: [
-        {
-          label: '热门城市',
-          options: [
-            {
-              value: 'Shanghai',
-              label: '上海',
-            }, {
-              value: 'Beijing',
-              label: '北京',
-            },
-          ],
-        },
-        {
-          label: '城市名',
-          options: [
-            {
-              value: 'Chengdu',
-              label: '成都',
-            }, {
-              value: 'Shenzhen',
-              label: '深圳',
-            }, {
-              value: 'Guangzhou',
-              label: '广州',
-            }, {
-              value: 'Dalian',
-              label: '大连',
-            },
-          ],
-        }],
-      value: '',
+      options: [{
+        value: 'HTML',
+        label: 'HTML',
+      }, {
+        value: 'CSS',
+        label: 'CSS',
+      }, {
+        value: 'JavaScript',
+        label: 'JavaScript',
+      }],
+      value: [],
     };
   },
 
