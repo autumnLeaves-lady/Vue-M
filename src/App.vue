@@ -7,7 +7,8 @@
     <div id="nav">
       <router-link to="/">表格</router-link> |
       <router-link to="/about" exact>输入框</router-link> |
-      <router-link to="/select" exact>选择框</router-link>
+      <router-link to="/select" exact>选择框</router-link> |
+      <router-link to="/echart" exact>图表</router-link>
     </div>
     <router-view />
   </div>

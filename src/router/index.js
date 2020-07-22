@@ -19,6 +19,11 @@ const routes = [{
   name: 'Select',
   component: () => import('../views/select.vue'),
 },
+{
+  path: '/echart',
+  name: 'Echart',
+  component: () => import('../views/Echart.vue'),
+},
 ];
 
 const router = new VueRouter({
