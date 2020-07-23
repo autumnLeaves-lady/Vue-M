@@ -46,75 +46,55 @@ export default {
     init() {
       const ele1 = document.getElementById('blood');
       this.myChart = this.$echarts.init(ele1);
-      // this.myChart.setOption(this.bloodOption);
       const dataObj = {
-        categories: [],
         legendData: ['动态曲线'],
-        yAxisData: [],
         yAxisName: '次',
+        categories: [],
         wangge: [],
+        yAxisData: [],
       };
-      dataObj.categories = (function () {
-        let now = new Date();
-        const res = [];
-        let len = 60;
-        while (len > 0) {
-          const m = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
-          const t = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
-          const time = `${now.getHours()}:${m}:${t}`;
-          res.unshift(time);
-          now = new Date(now - 1000);
-          len -= 1;
-        }
-        return res;
-      }());
-      dataObj.wangge = (function () {
-        const res = [];
-        let len = 60;
-        while (len > 0) {
-          res.push(100);
-          len -= 1;
-        }
-        return res;
-      }());
-      dataObj.yAxisData = (function () {
-        const res = [];
-        let len = 0;
-        while (len < 60) {
-          res.push('');
-          len += 1;
-        }
-        return res;
-      }());
-
+      dataObj.categories = this.categories();// 横坐标列表
+      dataObj.wangge = this.wangge();// (60)[100,100,...]
+      dataObj.yAxisData = this.yAxisData();// (60)['','',...]
       this.anlysis(this.myChart, dataObj); // 初始化绘图
-      setInterval(() => {
-        const axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
-
-        const data0 = dataObj.wangge;// 模拟网格
-        const data1 = dataObj.yAxisData;
-        data0.shift();
-        data0.push(100);
-        data1.shift();
-        data1.push(Math.round(Math.random() * 10));
-
-        dataObj.categories.shift();
-        dataObj.categories.push(axisData);
-
-        this.myChart.setOption({
-          xAxis: [{
-            data: dataObj.categories,
-          }, {
-            data: dataObj.categories,
-          }],
-          series: [{
-            data: data0,
-          }, {
-            data: data1,
-          }],
-        });
-      }, 1000);
+      this.Interval(this.myChart, dataObj); // 定时器先代替socket
     },
+    // 获取横坐标的60个时间列表
+    categories() {
+      let now = new Date();
+      const res = [];
+      let len = 60;
+      while (len > 0) {
+        const m = now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes();
+        const t = now.getSeconds() < 10 ? `0${now.getSeconds()}` : now.getSeconds();
+        const time = `${now.getHours()}:${m}:${t}`;
+        res.unshift(time);
+        now = new Date(now - 1000);
+        len -= 1;
+      }
+      return res;
+    },
+    // 获取柱状图的60个初始数据，都是100
+    wangge() {
+      const res = [];
+      let len = 60;
+      while (len > 0) {
+        res.push(100);
+        len -= 1;
+      }
+      return res;
+    },
+    // 获取折线图的60个初始数据，都是''
+    yAxisData() {
+      const res = [];
+      let len = 0;
+      while (len < 60) {
+        res.push('');
+        len += 1;
+      }
+      return res;
+    },
+    // 初始化绘图
     anlysis(chartObj, dataArray) {
       const option = {
         title: {
@@ -155,7 +135,7 @@ export default {
             lineStyle: { color: '#dfdfdf' }, // x轴刻度的颜色
           },
           axisLabel: {
-            color: '#555',
+            color: '#555', // 横坐标文字颜色
             rotate: '20',
             interval: 6,
             formatter(value) {
@@ -190,18 +170,18 @@ export default {
           splitLine: {
             show: true,
             lineStyle: {
-              color: '#007fff',
+              color: '#007fff', // 纵坐标刻度横线的颜色
             },
           },
           axisLabel: {
-            color: '#555',
+            color: '#555', // 纵坐标文字颜色
           },
           axisLine: {
-            lineStyle: { color: '#555' },
+            lineStyle: { color: '#555' }, // 纵坐标名称颜色
             // show:false
           },
           axisTick: {
-            lineStyle: { color: '#007fff' },
+            lineStyle: { color: '#007fff' }, // 纵坐标刻度短线的颜色
           },
         },
         {
@@ -226,11 +206,11 @@ export default {
         }],
         series: [{ // 网格
           // name: dataArray.legendData,
-          type: 'bar',
+          type: 'bar', // 柱状
           xAxisIndex: 1,
           yAxisIndex: 1,
-          barGap: '-100%',
-          barCategoryGap: '0%',
+          barGap: '-100%', // 不同系列的柱间距离,此时表示两个坐标系重合，没有间距
+          barCategoryGap: '0%', // 每个柱子之间的距离，设置为0，柱子之间没有间隙，网格就出来了
           itemStyle: {
             normal: {
               color: 'rgba(0,0,0,0)',
@@ -242,7 +222,7 @@ export default {
         },
         {
           name: dataArray.legendData,
-          type: 'line',
+          type: 'line', // 折线
           smooth: true, // 折线平滑参数
           showAllSymbol: true,
           symbol: 'circle',
@@ -289,6 +269,35 @@ export default {
 
       chartObj.hideLoading();
       chartObj.setOption(option);
+    },
+    // 定时器先代替socket
+    Interval(myChart, dataObj) {
+      setInterval(() => {
+        // 获取此时的时间 hh:mm:ss
+        const axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
+        // 模拟网格：更换柱状图的纵坐标数据，都是100
+        dataObj.wangge.shift();
+        dataObj.wangge.push(100);
+        // 更换折线的纵坐标数据
+        dataObj.yAxisData.shift();
+        dataObj.yAxisData.push(Math.round(Math.random() * 10));
+        // 更换纵坐标文字
+        dataObj.categories.shift();
+        dataObj.categories.push(axisData);
+        const option = {
+          xAxis: [{
+            data: dataObj.categories,
+          }, {
+            data: dataObj.categories,
+          }],
+          series: [{
+            data: dataObj.wangge,
+          }, {
+            data: dataObj.yAxisData,
+          }],
+        };
+        myChart.setOption(option);
+      }, 1000);
     },
   },
 
