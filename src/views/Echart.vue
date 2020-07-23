@@ -57,7 +57,7 @@ export default {
       dataObj.wangge = this.wangge();// (60)[100,100,...]
       dataObj.yAxisData = this.yAxisData();// (60)['','',...]
       this.anlysis(this.myChart, dataObj); // 初始化绘图
-      this.Interval(this.myChart, dataObj); // 定时器先代替socket
+      // this.Interval(this.myChart, dataObj); // 定时器先代替socket
     },
     // 获取横坐标的60个时间列表
     categories() {
