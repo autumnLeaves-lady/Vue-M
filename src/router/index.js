@@ -24,6 +24,11 @@ const routes = [{
   name: 'Echart',
   component: () => import('../views/Echart.vue'),
 },
+{
+  path: '/step',
+  name: 'Step',
+  component: () => import('../views/step.vue'),
+},
 ];
 
 const router = new VueRouter({
