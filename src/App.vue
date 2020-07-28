@@ -8,6 +8,7 @@
       <div class="nav">
         <router-link v-for="item in navList" :key="item.path" :to="item.path">{{item.text}}</router-link>
       </div>
+      <nav-menu></nav-menu>
       <div class="content">
         <router-view />
       </div>
@@ -16,12 +17,12 @@
 </template>
 
 <script>
-// import SsMenu from '@/views/Menu.vue';
+import NavMenu from '@/views/Menu.vue';
 
 export default {
   name: 'shuwnejian',
   components: {
-    // SsMenu,
+    NavMenu,
   },
   data() {
     return {
