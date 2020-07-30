@@ -10,9 +10,9 @@ const routes = [{
   component: Home,
 },
 {
-  path: '/about',
-  name: 'About',
-  component: () => import('../views/About.vue'),
+  path: '/input',
+  name: 'Input',
+  component: () => import('../views/input.vue'),
 },
 {
   path: '/select',
@@ -20,14 +20,31 @@ const routes = [{
   component: () => import('../views/select.vue'),
 },
 {
-  path: '/echart',
-  name: 'Echart',
-  component: () => import('../views/Echart.vue'),
-},
-{
   path: '/step',
   name: 'Step',
   component: () => import('../views/step.vue'),
+},
+{
+  path: '/table',
+  name: 'Table',
+  component: () => import('../views/table.vue'),
+},
+{
+  path: '/heartRate',
+  name: 'HeartRate',
+  component: () => import('../views/EChart/heartRate.vue'),
+}, {
+  path: '/lineChart',
+  name: 'LineChart',
+  component: () => import('../views/EChart/lineChart/index'),
+}, {
+  path: '/barChart',
+  name: 'BarChart',
+  component: () => import('../views/EChart/barChart/index'),
+}, {
+  path: '/pieChart',
+  name: 'PieChart',
+  component: () => import('../views/EChart/pieChart/index'),
 },
 ];
 

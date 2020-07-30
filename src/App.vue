@@ -6,9 +6,8 @@
     >测试项目</div>
     <div class="main">
       <div class="nav">
-        <router-link v-for="item in navList" :key="item.path" :to="item.path">{{item.text}}</router-link>
+        <nav-menu></nav-menu>
       </div>
-      <nav-menu></nav-menu>
       <div class="content">
         <router-view />
       </div>
@@ -27,10 +26,6 @@ export default {
   data() {
     return {
       navList: [
-        { text: '表格', path: '/' },
-        { text: '输入框', path: '/about' },
-        { text: '选择框', path: '/select' },
-        { text: '图表', path: '/echart' },
         { text: '步骤条', path: '/step' },
       ],
     };
@@ -61,24 +56,11 @@ export default {
     display: flex;
     height: calc(100% - 30px);
     .nav {
-    background-color: rgb(43, 26, 73);
-      width: 80px;
-      // height: 400px;
-      // background-color: bisque;
-      display: flex;
-      flex-direction: column;
-      a {
-        padding: 10px;
-        font-weight: bold;
-        color: #edf1f5;
-        &.router-link-exact-active {
-          color: #5bebaa;
-        }
-      }
+      width: 200px;
     }
     .content {
       background-color: rgb(238, 245, 250);
-      width: calc(100% - 20px);
+      width: calc(100% - 200px);
       padding: 10px;
     }
   }

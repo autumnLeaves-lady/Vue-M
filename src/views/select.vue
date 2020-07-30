@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'select',
+  name: 'select-box',
   data() {
     return {
       percentage: 20,
@@ -45,6 +45,8 @@ export default {
       return 'red';
     },
     increase() {
+      console.log('this.$route: ', this.$route);
+
       this.percentage += 10;
       if (this.percentage > 100) {
         this.percentage = 100;
