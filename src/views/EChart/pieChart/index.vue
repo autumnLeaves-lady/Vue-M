@@ -37,6 +37,6 @@ export default {
 .pie-chart {
   width: 100%;
   height: 400px;
-  background-color: rgb(223, 231, 208);
+  background-color: rgb(226, 230, 243);
 }
 </style>
