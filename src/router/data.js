@@ -33,6 +33,7 @@ export default [
   {
     value: 'eChart',
     key: 'eChart',
+    icon: 'el-icon-location',
     children: [{
       value: '心率图',
       key: 'heartRate',
@@ -53,5 +54,21 @@ export default [
       key: 'pieChart',
       path: '/pieChart',
     }],
+  },
+  {
+    value: 'Learn Vue',
+    key: 'learnVue',
+    icon: 'el-icon-location',
+    children: [{
+      value: 'js学习',
+      key: 'learnJS',
+      path: '/learnJS',
+    },
+    {
+      value: 'Vue学习',
+      key: 'learnVue',
+      path: '/learnVue',
+    },
+    ],
   },
 ];

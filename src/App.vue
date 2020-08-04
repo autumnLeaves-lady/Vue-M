@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import NavMenu from '@/views/Menu.vue';
+import NavMenu from '@/views/ElementUi/Menu.vue';
 
 export default {
   name: 'shuwnejian',
@@ -50,11 +50,11 @@ export default {
   height: 100%;
   .header {
     background-color: #729bc3;
-    height: 30px;
+    height: 100px;
   }
   .main {
     display: flex;
-    height: calc(100% - 30px);
+    height: calc(100% - 100px);
     .nav {
       width: 200px;
     }
