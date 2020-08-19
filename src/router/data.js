@@ -28,6 +28,11 @@ export default [
         key: 'step',
         path: '/step',
       },
+      {
+        value: '公共UI',
+        key: 'common',
+        path: '/common',
+      },
     ],
   },
   {

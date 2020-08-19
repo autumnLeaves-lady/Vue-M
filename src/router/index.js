@@ -25,6 +25,11 @@ const routes = [{
   component: () => import('@/views/ElementUi/step.vue'),
 },
 {
+  path: '/common',
+  name: 'Common',
+  component: () => import('@/views/ElementUi/common.vue'),
+},
+{
   path: '/table',
   name: 'Table',
   component: () => import('@/views/ElementUi/table.vue'),
@@ -53,7 +58,7 @@ const routes = [{
 },
 {
   path: '/learnVue',
-  name: 'learnVue',
+  name: 'LearnVue',
   component: () => import('@/views/Learn/learnVue.vue'),
 },
 ];

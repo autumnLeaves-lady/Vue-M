@@ -7,6 +7,7 @@
     text-color="#fff"
     active-text-color="#ffd04b"
     :default-active="active"
+    collapse
   >
     <template v-for="(item,index) in menuLists">
       <el-submenu

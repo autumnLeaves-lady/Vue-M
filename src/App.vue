@@ -56,11 +56,11 @@ export default {
     display: flex;
     height: calc(100% - 100px);
     .nav {
-      width: 200px;
+      // width: 200px;
     }
     .content {
       background-color: rgb(238, 245, 250);
-      width: calc(100% - 200px);
+      width: 100%;
       padding: 10px;
     }
   }
