@@ -50,11 +50,11 @@ export default {
   height: 100%;
   .header {
     background-color: #729bc3;
-    height: 100px;
+    height: 50px;
   }
   .main {
     display: flex;
-    height: calc(100% - 100px);
+    height: calc(100% - 50px);
     .nav {
       // width: 200px;
     }
