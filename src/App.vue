@@ -5,10 +5,13 @@
       class="header"
     >测试项目</div>
     <div class="main">
-      <div class="nav">
-        <nav-menu></nav-menu>
+      <div :class="collapse?'nav1':'nav2'">
+        <nav-menu
+          :collapse="collapse"
+          @iconChange="iconChange"
+        ></nav-menu>
       </div>
-      <div class="content">
+      <div :class="collapse?'content1':'content2'">
         <router-view />
       </div>
     </div>
@@ -25,9 +28,7 @@ export default {
   },
   data() {
     return {
-      navList: [
-        { text: '步骤条', path: '/step' },
-      ],
+      collapse: false,
     };
   },
   methods: {
@@ -36,6 +37,9 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    iconChange() {
+      this.collapse = !this.collapse;
     },
   },
 };
@@ -55,12 +59,20 @@ export default {
   .main {
     display: flex;
     height: calc(100% - 50px);
-    .nav {
-      // width: 200px;
+    .nav1 {
+      width: 64px;
     }
-    .content {
+    .nav2 {
+      width: 200px;
+    }
+    .content1 {
       background-color: rgb(238, 245, 250);
-      width: 100%;
+      width: calc(100% - 64px);
+      padding: 10px;
+    }
+    .content2 {
+      background-color: rgb(238, 245, 250);
+      width: calc(100% - 200px);
       padding: 10px;
     }
   }

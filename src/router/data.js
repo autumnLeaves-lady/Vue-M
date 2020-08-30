@@ -7,16 +7,7 @@ export default [
       {
         value: 'form',
         key: '1-1',
-        children: [{
-          value: '选择框',
-          key: '1-1-1',
-          path: '/select',
-        },
-        {
-          value: '输入框',
-          key: '1-1-2',
-          path: '/input',
-        }],
+        path: '/form',
       },
       {
         value: '表格',

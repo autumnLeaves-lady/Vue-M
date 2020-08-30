@@ -7,8 +7,9 @@
     text-color="#fff"
     active-text-color="#ffd04b"
     :default-active="active"
-    collapse
+    :collapse="collapse"
   >
+  <i class="el-icon-star-on icon" @click="iconChange"></i>
     <template v-for="(item,index) in menuLists">
       <el-submenu
         v-if="item.children"
@@ -66,6 +67,7 @@ export default {
       openedsArr: [],
     };
   },
+  props: ['collapse'],
   methods: {
     selectMenu(data) {
       const { path, key } = data;
@@ -88,6 +90,9 @@ export default {
       // }
       // console.log('关闭2', key, this.openedsArr);
     },
+    iconChange() {
+      this.$emit('iconChange');
+    },
   },
 };
 </script>
@@ -95,5 +100,10 @@ export default {
 <style  lang="scss">
 .el-menu-vertical-demo {
   height: 100%;
+  .icon{
+    width: 100%;
+    text-align: center;
+    color:#fff;
+  }
 }
 </style>

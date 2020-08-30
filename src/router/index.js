@@ -10,14 +10,75 @@ const routes = [{
   component: Home,
 },
 {
-  path: '/input',
-  name: 'Input',
-  component: () => import('@/views/ElementUi/input.vue'),
-},
-{
-  path: '/select',
-  name: 'Select',
-  component: () => import('@/views/ElementUi/select.vue'),
+  path: '/form/',
+  name: 'Form',
+  component: () => import('@/views/ElementUi/Form/index.vue'),
+  children: [
+    {
+      path: 'radio',
+      component: () => import('@/views/ElementUi/Form/radio.vue'),
+    },
+    {
+      path: 'checkbox',
+      component: () => import('@/views/ElementUi/Form/checkbox.vue'),
+    },
+    {
+      path: 'input',
+      component: () => import('@/views/ElementUi/Form/input.vue'),
+    },
+    {
+      path: 'inputNumber',
+      component: () => import('@/views/ElementUi/Form/inputNumber.vue'),
+    },
+    {
+      path: 'select',
+      component: () => import('@/views/ElementUi/Form/select.vue'),
+    },
+    {
+      path: 'cascader',
+      component: () => import('@/views/ElementUi/Form/cascader.vue'),
+    },
+    {
+      path: 'switch',
+      component: () => import('@/views/ElementUi/Form/switch.vue'),
+    },
+    {
+      path: 'slider',
+      component: () => import('@/views/ElementUi/Form/slider.vue'),
+    },
+    {
+      path: 'timePicker',
+      component: () => import('@/views/ElementUi/Form/timePicker.vue'),
+    },
+    {
+      path: 'datePicker',
+      component: () => import('@/views/ElementUi/Form/datePicker.vue'),
+    },
+    {
+      path: 'dateTimePicker',
+      component: () => import('@/views/ElementUi/Form/dateTimePicker.vue'),
+    },
+    {
+      path: 'upload',
+      component: () => import('@/views/ElementUi/Form/upload.vue'),
+    },
+    {
+      path: 'rate',
+      component: () => import('@/views/ElementUi/Form/rate.vue'),
+    },
+    {
+      path: 'colorPicker',
+      component: () => import('@/views/ElementUi/Form/colorPicker.vue'),
+    },
+    {
+      path: 'transfer',
+      component: () => import('@/views/ElementUi/Form/transfer.vue'),
+    },
+    {
+      path: 'form',
+      component: () => import('@/views/ElementUi/Form/form.vue'),
+    },
+  ],
 },
 {
   path: '/step',
