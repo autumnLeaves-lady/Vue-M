@@ -12,9 +12,9 @@ export default {
   },
   methods: {
     event() {
-      const time = new Date();
-      const result = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
-      console.log('result: ', result);
+      const obj = null;
+      const a = obj?.b?.c;
+      console.log('a: ', a);
     },
   },
 };

@@ -15,5 +15,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'max-len' : ["error", {code : 300}],
     'linebreak-style': ['off', 'windows'],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "camelcase": ["error", {"allow": ["aa_bb"]}]
   }
 }
