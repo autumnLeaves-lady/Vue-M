@@ -93,7 +93,7 @@ const routes = [{
 {
   path: '/table',
   name: 'Table',
-  component: () => import('@/views/ElementUi/table.vue'),
+  component: () => import('@/views/ElementUi/Table/index.vue'),
 },
 {
   path: '/heartRate',
