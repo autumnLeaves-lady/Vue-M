@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import Excel from '@/utils/excel';
+import Excel from '@/utils/exportExcel';
 import initData from './data';
 
 export default {

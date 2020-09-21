@@ -106,16 +106,11 @@ export function exportToExcel({
   autoWidth = true,
   bookType = 'xlsx',
 } = {}) {
-  /**
-   * multiHeader:除最后一层之外的表头
-   * header：最后一层表头
-   * filterVal：最后一层表头对应的prop
-   */
   const header = columns.map((item) => item.label);
   const filterVal = columns.map((item) => item.prop);
   // 将每一条表格数据处理成二维数组数据
   const data = formatJson(filterVal, tableData);
-  // 在最开头添加最后一层表头
+  // 添加表头
   data.unshift(header);
 
   const ws = sheetFromArrayOfArrays(data);
@@ -168,7 +163,7 @@ export function exportToExcel({
 }
 
 // 下载二级表头的表格
-export function exportJsonToExcel({
+export function exportToMergeExcel({
   filename = '测试表格', // 文件名称
   columns, // 表头
   tableData, // 表格数据
@@ -184,7 +179,7 @@ export function exportJsonToExcel({
   const { multiHeader, header, filterVal } = getHeader(columns);
   // 将每一条表格数据处理成二维数组数据
   const data = formatJson(filterVal, tableData);
-  // 在最开头添加最后一层表头
+  // 添加表头
   data.unshift(header);
   // 将另外的表头也在最开始的位置添加进去
   for (let i = multiHeader.length - 1; i > -1; i -= 1) {
