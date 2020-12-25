@@ -11,6 +11,8 @@ module.exports = {
     const configs = {};
     configs.externals = {
       Erizo: 'Erizo',
+      BMap: 'BMap',
+      BMap_Symbol_SHAPE_POINT: 'BMap_Symbol_SHAPE_POINT',
     };
     if (process.env.NODE_DEV === 'production') {
       const terserWebpackPlugin = config.optimization.minimizer[0];

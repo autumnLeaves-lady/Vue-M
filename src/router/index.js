@@ -115,12 +115,22 @@ const routes = [{
 {
   path: '/learnJS',
   name: 'LearnJS',
-  component: () => import('@/views/Learn/learnJS.vue'),
+  component: () => import('@/views/Learn-Vue/learnJS.vue'),
 },
 {
   path: '/learnVue',
   name: 'LearnVue',
-  component: () => import('@/views/Learn/learnVue.vue'),
+  component: () => import('@/views/Learn-Vue/learnVue.vue'),
+},
+{
+  path: '/cssLearn',
+  name: 'CssLearn',
+  component: () => import('@/views/Learn-css/learnCss.vue'),
+},
+{
+  path: '/Bmap',
+  name: 'Bmap',
+  component: () => import('@/views/Bmap/index.vue'),
 },
 ];
 

@@ -1,5 +1,5 @@
 <template>
-  <div>首页</div>
+  <div>样式学习</div>
 </template>
 
 <script>

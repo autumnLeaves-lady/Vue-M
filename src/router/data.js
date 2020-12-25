@@ -67,4 +67,21 @@ export default [
     },
     ],
   },
+  {
+    value: 'CSS',
+    key: 'css',
+    icon: 'el-icon-location',
+    children: [{
+      value: 'css学习',
+      key: 'cssLearn',
+      path: '/cssLearn',
+    },
+    ],
+  },
+  {
+    value: '百度地图',
+    key: 'map',
+    icon: 'el-icon-location',
+    path: '/Bmap',
+  },
 ];
