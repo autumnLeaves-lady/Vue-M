@@ -6,23 +6,22 @@
 </template>
 
 <script>
+import example from './data';
+
 export default {
   mounted() {
-
+    console.log('example: ', example);
   },
   methods: {
     event() {
-      const obj = null;
-      const a = obj?.b?.c;
-      console.log('a: ', a);
+
     },
   },
 };
 </script>
 
 <style lang="scss">
-.message{
+.message {
   background-color: rgb(185, 245, 179);
-
 }
 </style>

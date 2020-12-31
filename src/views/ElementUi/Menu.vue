@@ -76,10 +76,10 @@ export default {
     },
     handleOpen(key, keyPath) {
       this.openedsArr = keyPath;
-      console.log('打开', key, keyPath);
+      // console.log('打开', key, keyPath);
     },
     handleClose(key, keyPath) {
-      console.log('关闭', key, keyPath);
+      // console.log('关闭', key, keyPath);
       this.openedsArr = keyPath;
       // const newArr = keyPath;
       // if (keyPath.includes(key)) {
