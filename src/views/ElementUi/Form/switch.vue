@@ -1,13 +1,30 @@
 <template>
-  <div>开关</div>
+  <div>
+    <el-switch
+      v-model="value1"
+      active-icon-class="el-icon-circle-check"
+      inactive-icon-class="el-icon-circle-close"
+    >
+    </el-switch>
+
+  </div>
 </template>
 
 <script>
 export default {
-
+  data() {
+    return {
+      value1: true,
+      value2: false,
+    };
+  },
+  methods: {
+    test() {
+      console.log('value: ', this.value);
+    },
+  },
 };
 </script>
 
 <style>
-
 </style>

@@ -21,10 +21,6 @@ export default {
     return {
       data: [
         {
-          to: '/form/radio',
-          value: 'radio单选框',
-        },
-        {
           to: '/form/checkbox',
           value: 'Checkbox多选框',
         },

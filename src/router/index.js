@@ -1,23 +1,23 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '@/views/Home.vue';
+import Router from 'vue-router';
 
-Vue.use(VueRouter);
+const originalPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
+
+Vue.use(Router);
 
 const routes = [{
   path: '/',
   name: 'Home',
-  component: Home,
+  component: () => import('@/views/Home.vue'),
 },
 {
   path: '/form/',
   name: 'Form',
   component: () => import('@/views/ElementUi/Form/index.vue'),
   children: [
-    {
-      path: 'radio',
-      component: () => import('@/views/ElementUi/Form/radio.vue'),
-    },
     {
       path: 'checkbox',
       component: () => import('@/views/ElementUi/Form/checkbox.vue'),
@@ -96,6 +96,11 @@ const routes = [{
   component: () => import('@/views/ElementUi/Table/index.vue'),
 },
 {
+  path: '/tree',
+  name: 'Tree',
+  component: () => import('@/views/ElementUi/Tree/index.vue'),
+},
+{
   path: '/heartRate',
   name: 'HeartRate',
   component: () => import('@/views/EChart/heartRate.vue'),
@@ -134,7 +139,7 @@ const routes = [{
 },
 ];
 
-const router = new VueRouter({
+const router = new Router({
   routes,
 });
 

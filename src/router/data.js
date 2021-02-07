@@ -5,22 +5,27 @@ export default [
     icon: 'el-icon-location',
     children: [
       {
-        value: 'form',
+        value: 'form-表单',
         key: '1-1',
         path: '/form',
       },
       {
-        value: '表格',
+        value: 'table-表格',
         key: 'table',
         path: '/table',
       },
       {
-        value: '步骤条',
+        value: 'step-步骤条',
         key: 'step',
         path: '/step',
       },
       {
-        value: '公共UI',
+        value: 'tree-树',
+        key: 'tree',
+        path: '/tree',
+      },
+      {
+        value: '临时随机',
         key: 'common',
         path: '/common',
       },

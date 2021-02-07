@@ -16,6 +16,8 @@ module.exports = {
     'max-len' : ["error", {code : 300}],
     'linebreak-style': ['off', 'windows'],
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
-    "camelcase": ["error", {"allow": ["aa_bb"]}]
+    "camelcase": ["error", {"allow": ["aa_bb"]}],
+    "no-underscore-dangle": 'off', // 关闭禁止下划线的规则 
+    "no-param-reassign": 'off' // 关闭禁止给参数赋值的规则
   }
 }
