@@ -6,15 +6,21 @@
 </template>
 
 <script>
+/* eslint-disable */
 import example from './data';
 
 export default {
   mounted() {
-    console.log('example: ', example);
+    // console.log('example: ', example);
   },
   methods: {
     event() {
+      let a = 10;
+      let c = a--;
+      console.log('a: ', a); // 9
+      console.log('c: ', c); // 10
 
+     
     },
   },
 };
