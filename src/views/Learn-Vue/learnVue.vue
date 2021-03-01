@@ -1,13 +1,14 @@
 <template>
   <div ref="box">
     <div>
-    父组件：{{a}}
-    <div
-      v-for="(item, index) in title"
-      :key="index"
-    >
-      {{item.type}}：{{item.name}}
-    </div>
+      <strong>父组件:</strong>
+      <el-button @click="test">测试</el-button>
+      <div
+        v-for="(item, index) in title"
+        :key="index"
+      >
+        {{item.type}}：{{item.name}}
+      </div>
     </div>
     <hr>
     <child-components
@@ -42,11 +43,10 @@ export default {
   components: { ChildComponents },
 
   mounted() {
-
   },
   methods: {
-    event(param1,param2) {
-      console.log('param1,param2: ', param1,param2);
+    test() {
+      this.title.push({ name: '孟丽娇', type: '真是名字' })
     },
   }
 
