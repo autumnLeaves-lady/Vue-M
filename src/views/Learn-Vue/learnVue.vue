@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     test() {
-      this.title.push({ name: '孟丽娇', type: '真是名字' })
+      this.title[2] = { name: '孟丽娇', type: '父组件-真是名字' };
     },
   }
 

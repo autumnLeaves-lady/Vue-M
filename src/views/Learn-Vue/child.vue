@@ -1,11 +1,12 @@
 <template>
   <div ref="child">
     <strong>子组件：</strong>
+    <el-button @click="test">测试</el-button>
     <div
       v-for="(item, index) in newTitle"
       :key="index"
     >
-      {{item}}
+      {{item.type}}:{{item.name}}
     </div>
 
   </div>
@@ -19,13 +20,18 @@ export default {
   },
   computed: {
     newTitle() {
-      console.log('this.title: ', this.title);
-      return this.title.map((item) => `${item.type}---${item.name}`);
+      return this.title;
+      // return this.title.map((item) => `${item.type}---${item.name}`);
+    },
+  },
+  watch: {
+    title(val) {
+      console.log('监听到title被改变了: ', val);
     },
   },
   methods: {
     test() {
-      this.$emit('update:title', [{ name: '孟丽娇', type: '真是名字' }]);
+      this.$emit('update:title', [{ name: '孟丽娇', type: '子组件-真名字' }]);
     },
   },
 
