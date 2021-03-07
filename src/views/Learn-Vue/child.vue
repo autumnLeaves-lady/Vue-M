@@ -1,40 +1,32 @@
 <template>
   <div ref="child">
     <strong>子组件：</strong>
-    <el-button @click="test">测试</el-button>
-    <div
-      v-for="(item, index) in newTitle"
-      :key="index"
-    >
-      {{item.type}}:{{item.name}}
-    </div>
-
+    <div>aa:{{aa}}</div>
+    <hr>
+    <grandSon />
   </div>
 </template>
 
 <script>
+/* eslint-disable */
+import grandSon from './grandSon.vue';
+
 export default {
   name: 'children',
-  props: {
-    title: Array,
+  components: {
+    grandSon,
   },
-  computed: {
-    newTitle() {
-      return this.title;
-      // return this.title.map((item) => `${item.type}---${item.name}`);
-    },
-  },
-  watch: {
-    title(val) {
-      console.log('监听到title被改变了: ', val);
-    },
+    // provide() {
+  //   return {
+  //     aa: this.a,
+  //   }
+  // },
+  inject: ['aa'],
+  mounted() {
   },
   methods: {
-    test() {
-      this.$emit('update:title', [{ name: '孟丽娇', type: '子组件-真名字' }]);
-    },
-  },
 
+  },
 };
 </script>
 

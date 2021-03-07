@@ -1,17 +1,17 @@
 <template>
   <div ref="child">
-    孙组件
+    <strong>孙组件：</strong>
+    <div>aa:{{aa}}</div>
   </div>
 </template>
 
 <script>
+/* eslint-disable */
 export default {
   name: 'children',
-  props: {
-    a: String,
-  },
-
+  inject: ['aa'],
   mounted() {
+    // console.log('孙组件foo: ', this.foo);
   },
 };
 </script>
