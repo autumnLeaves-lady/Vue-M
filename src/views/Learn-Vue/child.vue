@@ -1,34 +1,39 @@
 <template>
   <div ref="child">
     <strong>子组件：</strong>
-    <div>aa:{{aa}}</div>
-    <hr>
-    <grandSon />
+    {{a}}
+    {{b}}
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import grandSon from './grandSon.vue';
+import GrandSon from './grand-son.vue';
 
 export default {
   name: 'children',
   components: {
-    grandSon,
+    GrandSon,
   },
-    // provide() {
-  //   return {
-  //     aa: this.a,
-  //   }
-  // },
-  inject: ['aa'],
-  mounted() {
+  props: ['a', 'b'],
+  watch: {
+    a: {
+      handler(val) {
+        console.log('子-watch-a: ', val);
+      },
+      deep: true,
+      immediate: true,
+    },
+    b: {
+      handler(val) {
+        console.log('子-watch-b: ', val);
+      },
+      deep: true,
+      immediate: true,
+    },
   },
   methods: {
 
   },
 };
 </script>
-
-<style>
-</style>
